@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
+    background: #0a0a0a;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.arrow-button {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(10, 10, 10, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.arrow-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.arrow-button.rotated {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.user-card {
+    background: rgba(10, 10, 10, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    width: 200%;
+    max-width: 400px;
+    transition: transform 0.4s ease;
+}
+
+.user-card.shifted {
+    transform: translateX(-220px);
+}
+
+.projects-panel {
+    position: fixed;
+    right: -400px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    max-height: 80vh;
+    background: rgba(10, 10, 10, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+}
+
+.projects-panel.visible {
+    right: 80px;
+}
+
+.projects-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+}
+
+.projects-content {
+    font-size: 16px;
+    color: #b3b3b3;
+    line-height: 1.6;
+}
+
+.avatar-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: #ffffff;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid rgba(20, 20, 20, 0.9);
+}
+
+.online {
+    background: #23a55a;
+}
+
+.dnd {
+    background: #f23f43;
+}
+
+.idle {
+    background: #f0b232;
+}
+
+.offline {
+    background: #80848e;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.username {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.guild-link {
+    margin: 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    padding: 8px 16px;
+    background: rgba(51, 51, 51, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    width: 100px;
+    transition: all 0.2s ease;
+}
+
+.guild-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.guild-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.guild-tag {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.spotify-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.spotify-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.spotify-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.spotify-album {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.spotify-details {
+    flex: 1;
+}
+
+.spotify-song {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.spotify-artist {
+    font-size: 14px;
+    color: #b3b3b3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.spotify-progress {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.spotify-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #ffffff;
+    transition: width 0.4s linear;
+}
+
+.spotify-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #b3b3b3;
+    margin-top: 4px;
+}
+
+.status-info {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-label {
+    font-size: 12px;
+    color: #80848e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.status-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.activity-card {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: rgba(20, 20, 20, 0.6);
+    border-radius: 10px;
+}
+
+.activity-card.custom-status {
+    background: rgba(20, 20, 20, 0.6);
+}
+
+.activity-header {
+    margin-bottom: 10px;
+}
+
+.activity-label {
+    font-size: 12px;
+    color: #80848e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.activity-content {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.activity-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-details-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.activity-state-text {
+    font-size: 13px;
+    color: #b3b3b3;
+}
+
+.activity-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 8px;
+}
